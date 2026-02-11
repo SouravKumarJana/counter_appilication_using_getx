@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'screens/first_screen.dart';
+import 'routes/app_pages.dart';
+import 'constants/app_sttrings.dart';
+import '../routes/app_routes.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -9,11 +11,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'GetX Counter App',
+      title: AppStrings.appTitle,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: FirstScreen(),
+      initialRoute: AppRoutes.firstScreen,
+      getPages: AppPages.pages,
     );
   }
 }

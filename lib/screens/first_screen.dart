@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/getx_count_controller.dart';
-import 'second_screen.dart';
+import '../controllers/counter_controller.dart';
+import '../constants/app_sttrings.dart';
+import '../routes/app_routes.dart';
 
 class FirstScreen extends StatelessWidget {
   FirstScreen({super.key});
 
-  final CounterController controller = Get.put(CounterController());
+  final CounterController controller = Get.find<CounterController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('First Screen'),
+        title: const Text(AppStrings.firstScreenTitle),
       ),
       body: Center(
         child: Column(
@@ -20,7 +21,7 @@ class FirstScreen extends StatelessWidget {
           children: [
 
             Obx(() => Text(
-              'Counter: ${controller.counter}',
+              '${AppStrings.counterText} ${controller.counter}',
               style: const TextStyle(fontSize: 28),
             )),
 
@@ -45,9 +46,9 @@ class FirstScreen extends StatelessWidget {
 
             ElevatedButton(
               onPressed: () {
-                Get.to(() => SecondScreen());
+                Get.toNamed(AppRoutes.secondScreen);
               },
-              child: const Text('Go to Second Screen'),
+              child: const Text(AppStrings.navigateScreenTitle),
             ),
           ],
         ),
